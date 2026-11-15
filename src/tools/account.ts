@@ -4,9 +4,8 @@ import type { OvhClient } from "../ovh-client.js";
 import { textResult } from "./utils.js";
 
 function priceText(val: unknown): string {
-  if (!val) return "n/a";
-  if (typeof val === "object" && val !== null && "text" in val) return String((val as Record<string, unknown>).text);
-  return String(val);
+  if (val instanceof Object && "text" in val) return String((val as Record<string, unknown>).text);
+  return val ? String(val) : "n/a";
 }
 
 export function registerAccountTools(server: McpServer, ovh: OvhClient) {

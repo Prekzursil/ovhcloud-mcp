@@ -116,7 +116,7 @@ export function registerSshTools(server: McpServer) {
       username: z.string().optional().describe("SSH username (default: SSH_USER env)"),
       password: z.string().optional().describe("SSH password (default: SSH_PASSWORD env)"),
       privateKeyFile: z.string().optional().describe("Path to SSH private key file"),
-      timeout: z.number().optional().default(60000).describe("Exec timeout in ms"),
+      timeout: z.number().optional().default(EXEC_TIMEOUT).describe("Exec timeout in ms"),
     },
     async (params) => {
       try {
